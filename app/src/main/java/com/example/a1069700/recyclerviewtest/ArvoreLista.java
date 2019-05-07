@@ -3,7 +3,6 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 class ArvoreLista {
-
     public int n;
     public No raiz;
 
@@ -14,6 +13,7 @@ class ArvoreLista {
 
     void inserir (String pai, String conteudo){
         No nPai = buscar(pai);
+        if(nPai == null)System.out.println(pai+" nao encontrado");
         inserir(nPai,conteudo);
     }
 
@@ -31,6 +31,7 @@ class ArvoreLista {
 
     void remover(String conteudo){
         No no = buscar(conteudo);
+        if(no == null)System.out.println(no+" nao encontrado");
         remover(no.pai,no);
     }
 
@@ -65,16 +66,16 @@ class ArvoreLista {
                     }
                 }
             }
-        }
+        }        
         return filho;
     }
 
 
     void mostrar(){
-        buscar(raiz,0);
+        mostrar(raiz,0);
     }
 
-    No buscar(No no,int i){
+    No mostrar(No no,int i){
         if(i < n){
             System.out.println(no.conteudo);
             if(!no.folha){
@@ -82,7 +83,7 @@ class ArvoreLista {
                 while (itr.hasNext())
                 {
                     No x = (No)itr.next();
-                    buscar(x,i+1);
+                    mostrar(x,i+1);
 
                 }
             }
